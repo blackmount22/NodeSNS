@@ -1,7 +1,7 @@
-const express = require('express');
+const express= require('express');
 const router = express.Router();
 
-router.use('/boardList', require('./boardList'));
-router.use('/boardAdd', require('./boardAdd'));
+router.use('/getboardlist', require('./getboardlist'));
+router.use('/addboard', require('./addboard'));
 
 module.exports = router;
