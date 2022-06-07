@@ -11,6 +11,22 @@ const getBoardList = async function(){
     });
 }
 
+const addBoard = async function(title, content){
+    var moment = require('moment');
+    var curDate = moment().toDate();
+
+    var sql = 'INSERT INTO BOARD (Title, Content, RegID, RegDate) values (?, ?, "kmmun", ?)';
+    var params =[title, content, curDate];
+
+    conn.query(sql, params, function(err, rows, fields) {
+        if(err) console.log('query is not excuted. select fail...\n' + err);
+        else {
+            return rows.affectedRows;
+        }
+    })           
+}
+
 module.exports = {
-    getBoardList
+    getBoardList,
+    addBoard
 }

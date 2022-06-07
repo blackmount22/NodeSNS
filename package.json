@@ -17,9 +17,16 @@
   },
   "homepage": "https://github.com/blackmount22/NodeSNS#readme",
   "dependencies": {
+    "axios": "^0.27.2",
+    "body-parser": "^1.20.0",
     "ejs": "^3.1.8",
     "express": "^4.18.1",
+<<<<<<< HEAD
     "mysql": "^2.18.1",
     "pm2": "^5.2.0"
+=======
+    "moment": "^2.29.3",
+    "mysql": "^2.18.1"
+>>>>>>> origin/main
   }
 }

@@ -24,6 +24,7 @@ app.use('/', routes);
 //     res.render('board/addBoard.html');
 // });
 
+
 app.listen(3000, () => {
     console.log('Connected 3000 PORT!')
 });

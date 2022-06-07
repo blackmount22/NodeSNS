@@ -3,5 +3,5 @@ const router = express.Router();
 
 router.use('/getuserlist', require('./getuserlist'));
 // router.use('/getAddUser', require('./addboard'));
-console.log("user mvc!!!!!!!!!!!1");
+console.log("user mvc!!!!!!!!!!!");
 module.exports = router;
