@@ -5,17 +5,6 @@ const router = express.Router();
 router.use(bodyParser.urlencoded({extended:true}));
 router.use(bodyParser.json());
 
-<<<<<<< HEAD
-router.post('/', async (req,res,next) => {
-    let result = await addBoard();
-    res.render('board/addBoard.html');
-    console.log(result);
-})
-router.get('/', (req, res) => {
-    res.render('board/addBoard.html');
-});
-module.exports = router;
-=======
 const {addBoard} = require('../../model/board');
 // const { response } = require('express');
 
@@ -29,4 +18,3 @@ router.post('/', (req,res) => {
 
 
 module.exports = router;
->>>>>>> origin/main
