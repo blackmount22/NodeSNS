@@ -1,11 +1,13 @@
 const express = require('express');
 const router = express.Router();
 
-const getUserList = require('../../model/user');
+const user = require('../../model/user');
 
-router.get('/', function(req, res, next){
-    console.log("fff"+getUserList);
-    let result = getUserList;
+router.get('/', async function(req, res, next){
+    console.log(1);
+    let result = await user.getUserList();
+    console.log(2);
+    // console.log(user.getUserList());
     // const result = new Promise((resolve, reject)=>{
     //     resolve('Success');
     // })
@@ -18,7 +20,7 @@ router.get('/', function(req, res, next){
     //     })
     // console.log('userList : '+ result);
     console.log("result: ",result);
-    res.send('get User List!!!!!!!!'+result.USR_ID);
+    
 })
 
 

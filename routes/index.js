@@ -3,9 +3,9 @@ const router = express.Router();
 
 /* 설정 how? idea 필요 */
 const userRouter = require('./user/index');
-const boardRouter = require('./board/index');
+// const boardRouter = require('./board/index');
 router.use('/user', userRouter)
-router.use('/board', boardRouter);
+// router.use('/board', boardRouter);
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
