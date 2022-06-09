@@ -4,9 +4,7 @@ const router = express.Router();
 const user = require('../../model/user');
 
 router.get('/', async function(req, res, next){
-    console.log(1);
     let result = await user.getUserList();
-    console.log(2);
     // console.log(user.getUserList());
     // const result = new Promise((resolve, reject)=>{
     //     resolve('Success');

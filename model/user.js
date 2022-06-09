@@ -1,7 +1,5 @@
 var db_config = require('../config/database.js');
 
-// db_config.connect(conn);
-
 const getUserList = async function(){
     var conn = await db_config.init();
     var sql = 'SELECT * FROM USER';

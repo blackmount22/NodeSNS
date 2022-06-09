@@ -20,12 +20,6 @@ app.use('/', routes);
 // app.use('/board', boardRouter);
 // app.use('/user', userRouter);
 
-// app.get('/board/addboard', (req, res) => {
-//     res.render('board/addBoard.html');
-// });
-
-
-
 app.listen(3000, () => {
     console.log('Connected 3000 PORT!')
 });
