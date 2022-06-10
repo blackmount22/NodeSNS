@@ -1,15 +1,30 @@
 const pool = require('../config/pool');
 
-const getBoardList = async function(){
-    const connectionPool = pool.getConnectionPool();
-    console.log(connectionPool);
+const getBoardList = async function() {
+    var sql = 'SELECT * FROM BOARD';
 
-    // var sql = 'SELECT * FROM BOARD';
-    // await connectionPool.query(sql, function(err, results, fields){
+    pool.getConnection(function(err, conn){
+        if(!err) {
+            conn.query(sql, function(err, rows, fields){
+                if(err) console.log('query is not excuted. select fail...\n' + err);
+                else {
+                    console.log(rows);
+                    return rows;
+                }
+            });
+
+            conn.release();
+        }
+    })
+
+    // await pool.query(sql, function(err, rows, fields){
     //     if(err) console.log('query is not excuted. select fail...\n' + err);
-    //     else console.log(results);
+    //     else console.log(rows);
     // });
-}
+
+    // // release 처리
+    // conn.releaseConnection(pool);
+};
 
 const addBoard = async function(title, content){
     var moment = require('moment');

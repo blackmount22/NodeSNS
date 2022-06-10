@@ -9,13 +9,14 @@
 <body>
     
     <div id="boardList">
-        <button v-on:click="getBoardList">Boards</button>
+        <button v-on:click="getBoard">get board list</button>
         <div>
-            {{boardList}}
+            {{ boardList }}
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
     <script>
         new Vue({
@@ -28,7 +29,7 @@
                     var vm= this;
                     axios.get('http://localhost:3000/board/getboardlist')
                     .then(function(response){
-                        console.log(response.data);
+                        console.log("555");
                         vm.boardList = response.data;
                     })
                     .catch(function(error){
