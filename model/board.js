@@ -1,30 +1,47 @@
-const pool = require('../config/pool');
+const req = require('express/lib/request');
+const res = require('express/lib/response');
+//const pool = require('../config/pool');
+const getConnectionPool = require('../config/pool');
 
-const getBoardList = async function() {
-    var sql = 'SELECT * FROM BOARD';
+const getBoardList = async function(){
+    var sql = 'Select * From Board';
 
-    pool.getConnection(function(err, conn){
-        if(!err) {
-            conn.query(sql, function(err, rows, fields){
-                if(err) console.log('query is not excuted. select fail...\n' + err);
-                else {
-                    console.log(rows);
-                    return rows;
-                }
-            });
-
-            conn.release();
-        }
+    getConnectionPool((conn) => {
+        conn.query(sql, function(err, rows, fields) {
+            if(err) console.log('query is not excuted. select fail...\n' + err);
+            else {
+                console.log(rows);
+                return rows;
+            }
+        });
     })
+}
 
-    // await pool.query(sql, function(err, rows, fields){
-    //     if(err) console.log('query is not excuted. select fail...\n' + err);
-    //     else console.log(rows);
-    // });
+// const getBoardList = async function() {
+//     var sql = 'SELECT * FROM BOARD';
 
-    // // release 처리
-    // conn.releaseConnection(pool);
-};
+//     pool.getConnection(function(err, conn){
+//         if(!err) {
+//             conn.query(sql, function(err, rows, fields){
+//                 if(err) console.log('query is not excuted. select fail...\n' + err);
+//                 else {
+//                     res.render(rows);
+//                     return rows;
+//                 }
+//             });
+
+//             conn.release();
+//         }
+//     })
+
+//     // await pool.query(sql, function(err, rows, fields){
+//     //     if(err) console.log('query is not excuted. select fail...\n' + err);
+//     //     else console.log(rows);
+//     // });
+
+//     // // release 처리
+//     // conn.releaseConnection(pool);
+// };
 
 const addBoard = async function(title, content){
     var moment = require('moment');
