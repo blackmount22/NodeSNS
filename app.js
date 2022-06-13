@@ -1,26 +1,24 @@
+const cors = require('cors');
 const express = require('express');
 const app = express();
 
-// 기존코드
-// const indexRouter = require('./routes/index');
-// const boardRouter = require('./routes/board');
-// const userRouter = require('./routes/user')
-
 const routes = require('./routes');
 
-app.set('views', __dirname + '/views');
-
-app.set('view engine', 'ejs');
 app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
 
+let corsOption = {
+    origin: 'http://127.0.0.1:5500', // 허락하는 요청 주소
+    credentials: true // true하면 프론트에 쿠키를 공유할수있게된다.
+} 
+
+// CORS 미들웨어 추가
+app.use(cors(corsOption)); 
+
+// 라우팅
 app.use('/', routes);
 
-// 기존코드
-// app.use('/', indexRouter);
-// app.use('/board', boardRouter);
-// app.use('/user', userRouter);
-
-app.listen(3000, () => {
-    console.log('Connected 3000 PORT!')
+app.listen(5500, () => {
+    console.log('Connected 5500 PORT!')
 });
 
