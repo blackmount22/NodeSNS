@@ -29,18 +29,29 @@ const getBoardList = async function(){
 }
 
 const addBoard = async function(title, content){
-    var moment = require('moment');
-    var curDate = moment().toDate();
 
-    var sql = 'INSERT INTO BOARD (Title, Content, RegID, RegDate) values (?, ?, "kmmun", ?)';
-    var params =[title, content, curDate];
+    const conn = await getConnectionPool.getConnection();    
 
-    conn.query(sql, params, function(err, rows, fields) {
-        if(err) console.log('query is not excuted. select fail...\n' + err);
-        else {
-            return rows.affectedRows;
-        }
-    })           
+    try {
+        var moment = require('moment');
+        var curDate = moment().toDate();
+    
+        var sql = 'INSERT INTO BOARD (Title, Content, RegID, RegDate) values (?, ?, "kmmun", ?)';
+        var params =[title, content, curDate];
+    
+        conn.query(sql, params, function(err, rows, fields) {
+            if(err) console.log('query is not excuted. select fail...\n' + err);
+            else {
+                console.log("model result : " + rows.affectedRows);
+                return rows.affectedRows;
+            }
+        })           
+    } catch(err) {
+        console.log(err);
+        return 0 ;
+    } finally {
+        conn.release();
+    }
 }
 
 module.exports = {
