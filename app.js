@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 
 const routes = require('./routes');
-
+console.log("routes : !!!!"+routes);
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 

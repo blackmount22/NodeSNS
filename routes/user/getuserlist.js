@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
 
-const user = require('../../model/user');
+const {getUserList} = require('../../model/user');
 
 router.get('/', async function(req, res, next){
-    let result = await user.getUserList();
+    let result = await getUserList();
+    res.send(result);
     // console.log(user.getUserList());
     // const result = new Promise((resolve, reject)=>{
     //     resolve('Success');
@@ -17,8 +18,6 @@ router.get('/', async function(req, res, next){
     //         console.log('failed', reason)
     //     })
     // console.log('userList : '+ result);
-    console.log("result: ",result);
-    
 })
 
 
