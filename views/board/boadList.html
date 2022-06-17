@@ -27,7 +27,7 @@
             methods: {
                 getBoard: function(){
                     var vm= this;
-                    axios.get('http://localhost:3000/board/getboardlist')
+                    axios.get('http://localhost:5500/board/getboardlist')
                     .then(function(response){
                         console.log("555");
                         vm.boardList = response.data;

@@ -13,7 +13,7 @@ router.post('/', (req,res) => {
     let content = req.body.content;
 
     let result = addBoard(title, content);
-    console.log("결과:" + result);
+    res.render(result);
 });
 
 

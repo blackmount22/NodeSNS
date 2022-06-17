@@ -1,68 +1,57 @@
-const getConnection = require('../config/pool');
+const res = require('express/lib/response');
+const getConnectionPool = require('../config/pool');
 
-const sql2 = 'Select * From Board';
+const getBoardList = async function(){
 
-const getBoardList = async function() {
-    const connectionPool = getConnection()
-    try{
-        console.log(2);
-        console.log(getConnection);
-        getConnection(async (conn) => {
-            console.log(3);
-            await conn.query(sql2, function(err, rows, fields) {
-                if(err) console.log('query is not excuted. select fail...\n' + err);
-                else {
-                    console.log(rows);
-                    return rows;
-                }
-            });
+    const conn = await getConnectionPool.getConnection();    
     
-            conn.release();
-        })
-    } catch(err){
+    try{
+        var sql = 'Select * From Board';
+        const [result] = await conn.query(sql);
+        return [result];
+    }
+    catch(err){
         console.log(err);
     }
+
+    conn.release();
+    return value;
+
+    // getConnectionPool((conn) => {
+    //     conn.query(sql, function(err, rows, fields) {
+    //         if(err) console.log('query is not excuted. select fail...\n' + err);
+    //         else {
+    //             console.log(rows);
+    //             return rows;
+    //         }
+    //     });
+    // })
 }
 
-// const getBoardList = async function() {
-//     var sql = 'SELECT * FROM BOARD';
-
-//     pool.getConnection(function(err, conn){
-//         if(!err) {
-//             conn.query(sql, function(err, rows, fields){
-//                 if(err) console.log('query is not excuted. select fail...\n' + err);
-//                 else {
-//                     res.render(rows);
-//                     return rows;
-//                 }
-//             });
-
-//             conn.release();
-//         }
-//     })
-
-//     // await pool.query(sql, function(err, rows, fields){
-//     //     if(err) console.log('query is not excuted. select fail...\n' + err);
-//     //     else console.log(rows);
-//     // });
-
-//     // // release 처리
-//     // conn.releaseConnection(pool);
-// };
-
 const addBoard = async function(title, content){
-    var moment = require('moment');
-    var curDate = moment().toDate();
 
-    var sql = 'INSERT INTO BOARD (Title, Content, RegID, RegDate) values (?, ?, "kmmun", ?)';
-    var params =[title, content, curDate];
+    const conn = await getConnectionPool.getConnection();    
 
-    conn.query(sql, params, function(err, rows, fields) {
-        if(err) console.log('query is not excuted. select fail...\n' + err);
-        else {
-            return rows.affectedRows;
-        }
-    })           
+    try {
+        var moment = require('moment');
+        var curDate = moment().toDate();
+    
+        var sql = 'INSERT INTO BOARD (Title, Content, RegID, RegDate) values (?, ?, "kmmun", ?)';
+        var params =[title, content, curDate];
+    
+        conn.query(sql, params, function(err, rows, fields) {
+            if(err) console.log('query is not excuted. select fail...\n' + err);
+            else {
+                console.log("model result : " + rows.affectedRows);
+                return rows.affectedRows;
+            }
+        })           
+    } catch(err) {
+        console.log(err);
+        return 0 ;
+    } finally {
+        conn.release();
+    }
 }
 
 module.exports = {
