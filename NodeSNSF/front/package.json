@@ -1,0 +1,19 @@
+{
+  "name": "front",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "@nuxtjs/axios": "^5.13.6",
+    "@nuxtjs/vuetify": "^1.12.3",
+    "axios": "^0.27.2",
+    "nuxt": "^2.15.8",
+    "vue": "^2.6.10",
+    "vuetify": "^2.6.6"
+  },
+  "scripts": {
+    "dev": "nuxt"
+  },
+  "author": "",
+  "license": "ISC"
+}

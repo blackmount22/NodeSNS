@@ -1,0 +1,23 @@
+[
+  {
+    "name": "profile",
+    "path": "/profile",
+    "component": "E:\\\\NodeSNS\\\\NodeSNSF\\\\front\\\\pages\\\\profile.vue",
+    "chunkName": "pages/profile",
+    "_name": "_05196f2b"
+  },
+  {
+    "name": "signup",
+    "path": "/signup",
+    "component": "E:\\\\NodeSNS\\\\NodeSNSF\\\\front\\\\pages\\\\signup.vue",
+    "chunkName": "pages/signup",
+    "_name": "_65721306"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "E:\\\\NodeSNS\\\\NodeSNSF\\\\front\\\\pages\\\\index.vue",
+    "chunkName": "pages/index",
+    "_name": "_054db758"
+  }
+]
