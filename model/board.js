@@ -1,20 +1,27 @@
-const req = require('express/lib/request');
-const res = require('express/lib/response');
-//const pool = require('../config/pool');
-const getConnectionPool = require('../config/pool');
+const getConnection = require('../config/pool');
 
-const getBoardList = async function(){
-    var sql = 'Select * From Board';
+const sql2 = 'Select * From Board';
 
-    getConnectionPool((conn) => {
-        conn.query(sql, function(err, rows, fields) {
-            if(err) console.log('query is not excuted. select fail...\n' + err);
-            else {
-                console.log(rows);
-                return rows;
-            }
-        });
-    })
+const getBoardList = async function() {
+    const connectionPool = getConnection()
+    try{
+        console.log(2);
+        console.log(getConnection);
+        getConnection(async (conn) => {
+            console.log(3);
+            await conn.query(sql2, function(err, rows, fields) {
+                if(err) console.log('query is not excuted. select fail...\n' + err);
+                else {
+                    console.log(rows);
+                    return rows;
+                }
+            });
+    
+            conn.release();
+        })
+    } catch(err){
+        console.log(err);
+    }
 }
 
 // const getBoardList = async function() {
