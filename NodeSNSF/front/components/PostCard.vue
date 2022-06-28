@@ -3,8 +3,8 @@
         <v-img/>
         <v-card-text>
             <div>
-                <h3>TEST</h3>
-                <div>안녕하세요 게시글입니다.</div>
+                <h3>{{boards.User.nickname}}</h3>
+                <nuxt-link :to="'/board/'+boards.id">{{boards.content}}</nuxt-link>
             </div>
         </v-card-text>
         <v-card-actions>
@@ -15,18 +15,27 @@
                 <v-icon>mdi-heart-outline</v-icon>
             </v-btn>
             <v-btn text color="orange">
-                <v-icon>mdi-comment-retweet</v-icon>
+                <v-icon>mdi-comment-outline</v-icon>
             </v-btn>
             <v-btn text color="orange">
                 <v-icon>mdi-dots-horizontal</v-icon>
             </v-btn>
         </v-card-actions>
-    </v-card>
+    </v-card> 
 </template>
 
 <script>
     export default {
-
+        props:{
+            boards:{
+                type: Object,
+                required: true,
+            }
+        },
+        created(){ 
+            console.log(this.boards)
+            console.log(this.$store.state.board.boards)
+        }
     }
 </script>
 

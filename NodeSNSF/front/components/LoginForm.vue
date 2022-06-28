@@ -1,32 +1,66 @@
 <template>
-    <v-container>
+    <v-container v-if="!me">
         <v-card>
-            <v-form>
+            <v-form ref="form" v-model="valid" @submit.prevent="onSubmitLogin">
                 <v-container>
                     <v-text-field
+                        v-model="email"
                         label="이메일"
                         type="email"
                         required
                     />
                     <v-text-field
+                        v-model="password"
                         label="비밀번호"
                         type="password"
                         required
                     />
-                    <v-btn color="green" type="submit">로그인</v-btn>
+                    <v-btn color="green" type="submit" :disabled="!valid">로그인</v-btn>
                     <v-btn nuxt to="/signup">회원가입</v-btn>
                 </v-container>
             </v-form>
+        </v-card>
+    </v-container>
+    <v-container v-else>
+        <v-card>
+            <v-container>
+                {{me.nickname}}님 로그인되었습니다
+                <v-btn @click="onLogOut">로그아웃</v-btn>
+            </v-container>
         </v-card>
     </v-container>
 </template>
 
 <script>
     export default {
-        
+        data(){
+            return {
+                valid: false,
+                email: '',
+                password: '',
+            }
+        },
+        computed:{
+            me(){
+                return this.$store.state.user.me;
+            },
+        },
+        methods: {
+            onSubmitLogin() {
+                if(this.$refs.form.validate()){
+                    this.$store.dispatch('user/login', {
+                        email: this.email,
+                        nickname: '테스트',
+                    });
+                }
+            },
+            onLogOut(){
+                this.$store.dispatch('user/logOut')
+            }
+        }
     }
 </script>
 
 <styles>
-
+    
 </styles>
