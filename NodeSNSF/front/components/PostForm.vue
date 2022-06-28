@@ -44,7 +44,7 @@
                         User: {
                             nickname: this.me.nickname,
                         },
-                        id: Date.now(),
+                        id: this.me.nickname,
                         createdAt:Date.now(),
                     }).then(() =>{
                         this.content= '';

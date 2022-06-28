@@ -12,10 +12,8 @@ export const mutations = ({
 export const actions = ({
     add({commit}, payload){
         this.$axios.post('http://localhost:5500/board/addboard', {
-            title: payload.title,
             content: payload.content,
-            regID: payload.regID,
-            regDate: moment().toDate(),
+            regID: payload.id,
         })
         commit('addBoard', payload);
     }

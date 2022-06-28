@@ -5,6 +5,7 @@ const router = express.Router();
 // const userController = require('../controller/user_controller');
 const userRouter = require('./user/index');
 const boardRouter = require('./board/index');
+
 // router.use('/main', userController.mainView);
 router.use('/user', userRouter);
 router.use('/board', boardRouter);
