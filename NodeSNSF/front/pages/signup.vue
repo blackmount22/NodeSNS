@@ -4,28 +4,33 @@
             <v-card>
                 <v-subheader>회원가입</v-subheader>
                 <v-container>
-                    <v-form>
+                    <v-form ref="form" v-model="valid" @submit.prevent="onSignUp">
                         <v-text-field
+                            v-model="email"
                             label="이메일"
                             type="email"
                             required
                         />
                         <v-text-field
+                            v-model="password"
                             label="비밀번호"
                             type="password"
                             required
                         />
                         <v-text-field
+                            v-model="passwordCheck"
                             label="비밀번호확인"
                             type="password"
                             required
                         />
                         <v-text-field
+                            v-model="nickname"
                             label="닉네임"
                             type="nickname"
                             required
                         />
                         <v-text-field
+                            v-model="phone"
                             label="휴대전화"
                             type="phone"
                             required
@@ -47,8 +52,23 @@
         data(){
             return {
                 name : "Nuxt.js",
+                nickname: '',
+                email: '',
+                password: '',
+                passwordCheck: '',
             }
         },
+        methods: {
+            onSignUp() {
+                if(this.$refs.form.validate()){
+                    this.$store.dispatch('users/signup', {
+                        nickname: this.nickname,
+                        email: this.email,
+                        password: this.password,
+                    })
+                }
+            }
+        }
     }
 
 </script>

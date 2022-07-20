@@ -11,6 +11,7 @@ const db = {};
 const sequelize = new Sequelize(config.database, config.username, config.password, config);
 
 db.Board = require('./board')(sequelize, Sequelize);
+db.Board = require('./user')(sequelize, Sequelize);
 
 Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {

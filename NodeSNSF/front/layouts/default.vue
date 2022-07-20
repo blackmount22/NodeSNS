@@ -3,7 +3,7 @@
         <nav>
             <v-toolbar dark color="black">
                 <v-toolbar-title>
-                    <nuxt-link to="">Nodebird</nuxt-link>         
+                    <nuxt-link nuxt to="/">Nodebird</nuxt-link>         
                 </v-toolbar-title>
                 <v-spacer></v-spacer>
                 <v-toolbar-items>

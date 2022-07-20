@@ -5,6 +5,8 @@ const db = require('./models');
 
 const routes = require('./routes');
 
+const userRouter = require('./routes/user');
+
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
