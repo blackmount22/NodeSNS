@@ -50,7 +50,7 @@
                 if(this.$refs.form.validate()){
                     this.$store.dispatch('user/login', {
                         email: this.email,
-                        nickname: '테스트',
+                        password: this.password
                     });
                 }
             },

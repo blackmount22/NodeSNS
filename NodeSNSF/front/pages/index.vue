@@ -2,7 +2,7 @@
     <v-container>
         <post-form v-if="me"></post-form>
         <div>
-            <post-card v-for="b in boards" :boards="b" :key="b.id" ></post-card>
+            <post-card v-for="b in boards" :boards="b" :key="b.boardNo" ></post-card>
         </div>
     </v-container>
 </template>
@@ -15,7 +15,7 @@
         components: { PostCard, PostForm },
         data(){
             return {
-                name: "nuxt.js"
+                boards: [],
             }
         },
         computed: {
@@ -23,7 +23,22 @@
                 return this.$store.state.user.me;
             },
             boards(){
+                console.log(1);
                 return this.$store.state.board.boards;
+            }
+        },
+        created(){
+            this.init();
+        },
+        methods:{
+            async init() {
+                try{
+                    console.log(2);
+                    const {data} = await this.$store.dispatch('board/getBoard');
+                    console.log(data);
+                } catch (e) {
+                    console.error(e);
+                }
             }
         }
     }

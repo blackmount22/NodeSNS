@@ -29,12 +29,6 @@
                             type="nickname"
                             required
                         />
-                        <v-text-field
-                            v-model="phone"
-                            label="휴대전화"
-                            type="phone"
-                            required
-                        />
                         <v-checkbox
                         required
                         label="체크박스입니다." 
@@ -61,7 +55,7 @@
         methods: {
             onSignUp() {
                 if(this.$refs.form.validate()){
-                    this.$store.dispatch('users/signup', {
+                    this.$store.dispatch('user/signUp', {
                         nickname: this.nickname,
                         email: this.email,
                         password: this.password,

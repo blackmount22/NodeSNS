@@ -2,22 +2,22 @@
   {
     "name": "profile",
     "path": "/profile",
-    "component": "D:\\\\NodeSNS\\\\NodeSNSF\\\\front\\\\pages\\\\profile.vue",
+    "component": "D:\\\\nodesns\\\\nodesnsF\\\\front\\\\pages\\\\profile.vue",
     "chunkName": "pages/profile",
-    "_name": "_69626568"
+    "_name": "_0ecf954c"
   },
   {
     "name": "signup",
     "path": "/signup",
-    "component": "D:\\\\NodeSNS\\\\NodeSNSF\\\\front\\\\pages\\\\signup.vue",
+    "component": "D:\\\\nodesns\\\\nodesnsF\\\\front\\\\pages\\\\signup.vue",
     "chunkName": "pages/signup",
-    "_name": "_20102676"
+    "_name": "_553e24c5"
   },
   {
     "name": "index",
     "path": "/",
-    "component": "D:\\\\NodeSNS\\\\NodeSNSF\\\\front\\\\pages\\\\index.vue",
+    "component": "D:\\\\nodesns\\\\nodesnsF\\\\front\\\\pages\\\\index.vue",
     "chunkName": "pages/index",
-    "_name": "_43e196b5"
+    "_name": "_fe174296"
   }
 ]
